@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+Entries
+{% endblock %}
+{% block content %}
+<div>
+    <h4>Entries:</h4>
+    <ul>
+        {% for entry in object_list %}
+            <li>
+                <a href="{% url 'entry' entry.id %}">
+                    <span>{{entry.text|truncatewords:20}}</span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="pagination">
+      {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Next</a>
+      {% endif %}
+    </div>
+    <div>
+        <a href="{% url 'entry-create' %}">|+|</a>
+    </div>
+</div>
+{% endblock %}

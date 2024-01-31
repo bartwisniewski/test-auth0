@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+Entry details
+{% endblock %}
+{% block content %}
+<div>
+        <p>Status: {{ object.text }}</p>
+        <div>
+            <a href="{% url 'entries' %}">|ALL ENTRIES|</a>
+        </div>
+</div>
+{% endblock %}
